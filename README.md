@@ -1,6 +1,6 @@
 # Hong Kong Government Security Incident MCP Server
 
-[![GitHub Repository](https://img.shields.io/badge/GitHub-Repository-blue.svg)](https://github.com/hkopenai/hk-housing-mcp-server)
+[![GitHub Repository](https://img.shields.io/badge/GitHub-Repository-blue.svg)](https://github.com/hkopenai/hk-tech-mcp-server)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
 This is an MCP server that provides access to government security incident data through a FastMCP interface.
@@ -42,13 +42,13 @@ To connect this MCP server to Cline using stdio:
 1. Add this configuration to your Cline MCP settings (cline_mcp_settings.json):
 ```json
 {
-  "hk-housing": {
+  "hk-tech": {
     "disabled": false,
     "timeout": 3,
     "type": "stdio",
     "command": "uvx",
     "args": [
-      "hkopenai.hk-housing-mcp-server"
+      "hkopenai.hk-tech-mcp-server"
     ]
   }
 }

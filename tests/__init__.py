@@ -1,1 +1,1 @@
-"""Tests for hkopenai.hk-housing-mcp-server package."""
+"""Tests for hkopenai.hk-tech-mcp-server package."""

@@ -1,6 +1,6 @@
 import unittest
 from unittest.mock import patch
-from hkopenai.hk_housing_mcp_server.tool_security_incident import (
+from hkopenai.hk_tech_mcp_server.tool_security_incident import (
     fetch_security_incident_data,
     get_security_incidents
 )

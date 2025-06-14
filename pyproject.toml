@@ -3,7 +3,7 @@ requires = ["setuptools>=42", "wheel"]
 build-backend = "setuptools.build_meta"
 
 [tool.setuptools]
-packages = ["hkopenai.hk_housing_mcp_server"]
+packages = ["hkopenai.hk_tech_mcp_server"]
 include-package-data = false
 
 [tool.hatch.build.targets.wheel]
@@ -13,12 +13,12 @@ packages = ["hkopenai"]
 exclude_dirs = ["venv", ".venv", "tests"]
 
 [project.urls]
-repository = "https://github.com/hkopenai/hk-housing-mcp-server.git"
+repository = "https://github.com/hkopenai/hk-tech-mcp-server.git"
 
 [project]
-name = "hkopenai.hk_housing_mcp_server"
+name = "hkopenai.hk_tech_mcp_server"
 version = "0.1.8"
-description = "Hong Kong housing MCP Server providing housing data tools"
+description = "Hong Kong tech MCP Server providing tech data tools"
 readme = "README.md"
 requires-python = ">=3.7"
 authors = [
@@ -38,7 +38,7 @@ dependencies = [
 ]
 
 [project.scripts]
-hk_housing_mcp_server = "hkopenai.hk_housing_mcp_server.app:main"
+hk_tech_mcp_server = "hkopenai.hk_tech_mcp_server.app:main"
 
 [tool.pytest.ini_options]
 asyncio_default_fixture_loop_scope = "function"

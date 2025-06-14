@@ -1,12 +1,12 @@
 import argparse
 from fastmcp import FastMCP
-from hkopenai.hk_housing_mcp_server import tool_security_incident
+from hkopenai.hk_tech_mcp_server import tool_security_incident
 from typing import Dict, List, Annotated, Optional
 from pydantic import Field
 
 def create_mcp_server():
     """Create and configure the MCP server"""
-    mcp = FastMCP(name="HK OpenAI housing Server")
+    mcp = FastMCP(name="HK OpenAI tech Server")
 
     @mcp.tool(
         description="Number of Government information security incidents reported to Digital Policy Office in Hong Kong"
