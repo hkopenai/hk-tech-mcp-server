@@ -18,7 +18,7 @@ repository = "https://github.com/hkopenai/hk-tech-mcp-server.git"
 [project]
 name = "hkopenai.hk_tech_mcp_server"
 version = "0.1.8"
-description = "Hong Kong tech MCP Server providing tech data tools"
+description = "Hong Kong technolog and broadcast MCP Server providing tech data tools"
 readme = "README.md"
 requires-python = ">=3.7"
 authors = [
