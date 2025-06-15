@@ -3,7 +3,7 @@
 [![GitHub Repository](https://img.shields.io/badge/GitHub-Repository-blue.svg)](https://github.com/hkopenai/hk-housing-mcp-server)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
-This is an MCP server that provides access to government security incident data through a FastMCP interface.
+This is an MCP server that provides access to government technolog and broadcast data through a FastMCP interface.
 
 ## Features
 
