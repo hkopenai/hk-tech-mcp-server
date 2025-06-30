@@ -1,9 +1,9 @@
 import unittest
 from unittest.mock import patch, Mock
-from hkopenai.hk_commerce_mcp_server.app import create_mcp_server
+from hkopenai.hk_tech_mcp_server.server import create_mcp_server
 
 class TestApp(unittest.TestCase):
-    @patch('hkopenai.hk_commerce_mcp_server.app.FastMCP')
+    @patch('hkopenai.hk_tech_mcp_server.server.FastMCP')
     @patch('hkopenai.hk_tech_mcp_server.tool_security_incident.get_security_incidents')
     def test_create_mcp_server(self, mock_tool_security, mock_fastmcp):
         # Setup mocks
