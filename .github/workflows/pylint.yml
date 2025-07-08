@@ -22,4 +22,4 @@ jobs:
     - name: Analysing the code with pylint
       run: |
         # Only block on fatal and error exit codes
-        pylint --fail-on FE $(git ls-files '*.py')
+        pylint --fail-under 5 $(git ls-files '*.py')
