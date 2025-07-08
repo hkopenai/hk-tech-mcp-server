@@ -24,10 +24,10 @@ def create_mcp_server():
 
 def main():
     """
-    Main function to run the HC Tech MCPServer.
+    Main function to run the Tech MCP Server.
     Parses command line arguments to determine the mode of operation (SSE or stdio).
     """
-    parser = argparse.ArgumentParser(description="HC Tech MCPServer")
+    parser = argparse.ArgumentParser(description="Tech MCP Server")
     parser.add_argument(
         "-s", "--sse", action="store_true", help="Run in SSE mode instead of stdio"
     )
@@ -40,10 +40,10 @@ def main():
 
     if args.sse:
         server.run(transport="streamable-http", host=args.host)
-        print(f"HC Tech MCPServer running in SSE mode on port 8000, bound to {args.host}")
+        print(f"Tech MCP Server running in SSE mode on port 8000, bound to {args.host}")
     else:
         server.run()
-        print("HC Tech MCPServer running in stdio mode")
+        print("Tech MCP Server running in stdio mode")
 
 
 if __name__ == "__main__":
