@@ -56,4 +56,4 @@ if __name__ == "__main__":
             "Running all live tests. To run a specific test, provide the test name as an argument."
         )
 
-    exit(run_live_tests(TEST_NAME))
+    sys.exit(run_live_tests(TEST_NAME))

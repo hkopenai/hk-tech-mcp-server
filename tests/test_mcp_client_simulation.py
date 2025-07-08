@@ -12,7 +12,6 @@ import time
 import asyncio
 import socket
 import logging
-from datetime import datetime, timedelta
 from mcp.client.streamable_http import streamablehttp_client
 from mcp import ClientSession
 
@@ -63,7 +62,7 @@ class TestMCPClientSimulation(unittest.TestCase):
                     logger.debug("Server is listening on port 8000.")
                     break
             except OSError as e:
-                logger.debug(f"Waiting for server to start: {e}")
+                logger.debug("Waiting for server to start: %s", e)
                 time.sleep(1)
         else:
             self.server_process.terminate()
@@ -72,7 +71,7 @@ class TestMCPClientSimulation(unittest.TestCase):
                 self.server_process.kill()
             raise Exception("Server did not start listening on port 8000 in time.")
 
-        logger.debug(f"Server setup complete.")
+        logger.debug("Server setup complete.")
 
     def tearDown(self):
         # Terminate the server process
@@ -89,7 +88,7 @@ class TestMCPClientSimulation(unittest.TestCase):
             if self.server_process.stderr:
                 stderr_output = self.server_process.stderr.read()
                 if stderr_output:
-                    logger.debug(f"Server stderr (remaining):\n{stderr_output}")
+                    logger.debug("Server stderr (remaining):\n%s", stderr_output)
                 else:
                     logger.debug("Server stderr (remaining): (empty)")
                 self.server_process.stderr.close()
@@ -104,7 +103,7 @@ class TestMCPClientSimulation(unittest.TestCase):
             async with ClientSession(read_stream, write_stream) as session:
                 await session.initialize()
                 response = await session.call_tool(tool_name, params)
-                logger.info(f"'{tool_name}' tool response: {str(response)[:500]}...")
+                logger.info("'%s' tool response: %s...", tool_name, str(response)[:500])
 
                 json_text = response.content[0].text if response.content else "{}"
                 data = json.loads(json_text)

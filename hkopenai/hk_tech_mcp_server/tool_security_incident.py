@@ -3,10 +3,8 @@ Module for fetching government information security incident data from the Digit
 Provides tools to retrieve incident statistics for analysis.
 """
 
-import requests
 from typing import List, Dict
-from pydantic import Field
-from typing_extensions import Annotated
+import requests
 
 
 def fetch_security_incident_data() -> List[Dict]:
