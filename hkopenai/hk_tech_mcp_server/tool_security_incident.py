@@ -14,7 +14,20 @@ def fetch_security_incident_data() -> List[Dict]:
     return response.json()
 
 
-def get_security_incidents() -> List[Dict]:
+def register(mcp):
+    """Registers the security incident tool with the FastMCP server."""
+    @mcp.tool(
+        description="Number of Government information security incidents reported to Digital Policy Office in Hong Kong"
+    )
+    def get_security_incidents() -> List[Dict]:
+        """Get number of government information security incidents reported to Digital Policy Office in Hong Kong
+
+        Returns:
+            List of incidents by year with type and count details
+        """
+        return _get_security_incidents()
+
+def _get_security_incidents() -> List[Dict]:
     """Get number of government information security incidents reported to Digital Policy Office in Hong Kong
 
     Returns:

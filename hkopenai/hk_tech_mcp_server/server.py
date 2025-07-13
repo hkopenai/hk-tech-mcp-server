@@ -13,11 +13,7 @@ def create_mcp_server():
     """Create and configure the MCP server"""
     mcp = FastMCP(name="HK OpenAI tech Server")
 
-    @mcp.tool(
-        description="Number of Government information security incidents reported to Digital Policy Office in Hong Kong"
-    )
-    def get_security_incidents() -> List[Dict]:
-        return tool_security_incident.get_security_incidents()
+    tool_security_incident.register(mcp)
 
     return mcp
 
