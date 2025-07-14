@@ -12,6 +12,7 @@ class TestApp(unittest.TestCase):
     """
     Test class for verifying the functionality of the MCP server application.
     """
+
     @patch("hkopenai.hk_tech_mcp_server.server.FastMCP")
     @patch("hkopenai.hk_tech_mcp_server.server.tool_security_incident")
     def test_create_mcp_server(self, mock_tool_security_incident, mock_fastmcp):

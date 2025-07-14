@@ -17,6 +17,7 @@ class TestSecurityIncident(unittest.TestCase):
     """
     Test class for verifying the functionality of security incident data retrieval.
     """
+
     JSON_DATA = [
         {
             "year": 2025,

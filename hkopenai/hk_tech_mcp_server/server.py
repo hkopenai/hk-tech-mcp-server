@@ -3,8 +3,6 @@ Module for creating and running the HK OpenAI Tech MCP Server.
 This server provides tools for accessing government information security incident data in Hong Kong.
 """
 
-import argparse
-from typing import Dict, List
 from fastmcp import FastMCP
 from hkopenai.hk_tech_mcp_server import tool_security_incident
 
@@ -28,7 +26,9 @@ def main(host: str, port: int, sse: bool):
 
     if sse:
         server.run(transport="streamable-http", host=host, port=port)
-        print(f"Tech MCP Server running in SSE mode on port {args.port}, bound to {args.host}")
+        print(
+            f"Tech MCP Server running in SSE mode on port {args.port}, bound to {args.host}"
+        )
     else:
         server.run()
         print("Tech MCP Server running in stdio mode")
