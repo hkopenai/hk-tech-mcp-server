@@ -4,14 +4,13 @@ Provides tools to retrieve incident statistics for analysis.
 """
 
 from typing import List, Dict
-import requests
+from hkopenai_common.json_utils import fetch_json_data
 
 
 def fetch_security_incident_data() -> List[Dict]:
     """Fetch security incident data from Digital Policy Office"""
     url = "https://www.govcert.gov.hk/en/incidents.json"
-    response = requests.get(url)
-    return response.json()
+    return fetch_json_data(url)
 
 
 def register(mcp):
