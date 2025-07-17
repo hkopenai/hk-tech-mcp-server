@@ -25,19 +25,13 @@ class TestServer(unittest.TestCase):
         mock_fastmcp.return_value = mock_mcp_instance
 
         # Call the server function
-        server(host="localhost", port=8000, sse=True)
+        server()
 
         # Verify FastMCP was instantiated
         mock_fastmcp.assert_called_once_with(name="HK OpenAI tech Server")
 
         # Verify tool registration
         mock_register_func.assert_called_once_with(mock_mcp_instance)
-
-        # Verify server run method was called
-        mock_mcp_instance.run.assert_called_once_with(
-            transport="streamable-http", host="localhost", port=8000
-        )
-
 
 if __name__ == "__main__":
     unittest.main()
