@@ -5,37 +5,38 @@ This module contains unit tests to verify the correct setup of the MCP server.
 
 import unittest
 from unittest.mock import patch, Mock
-from hkopenai.hk_tech_mcp_server.server import create_mcp_server
+from hkopenai.hk_tech_mcp_server.server import server
 
 
-class TestApp(unittest.TestCase):
+class TestServer(unittest.TestCase):
     """
     Test class for verifying the functionality of the MCP server application.
     """
 
     @patch("hkopenai.hk_tech_mcp_server.server.FastMCP")
-    @patch("hkopenai.hk_tech_mcp_server.server.tool_security_incident")
-    def test_create_mcp_server(self, mock_tool_security_incident, mock_fastmcp):
+    @patch("hkopenai.hk_tech_mcp_server.tools.security_incident.register")
+    def test_server_startup(self, mock_register_func, mock_fastmcp):
         """
-        Test the creation of the MCP server and the registration of tools.
+        Test the server startup and tool registration.
         Verifies that the server is created correctly and tools are registered as expected.
         """
         # Setup mocks
-        mock_server = Mock()
+        mock_mcp_instance = Mock()
+        mock_fastmcp.return_value = mock_mcp_instance
 
-        # Configure mock_server.tool to return a mock that acts as the decorator
-        # This mock will then be called with the function to be decorated
-        mock_server.tool.return_value = Mock()
-        mock_fastmcp.return_value = mock_server
+        # Call the server function
+        server(host="localhost", port=8000, sse=True)
 
-        # Test server creation
-        server = create_mcp_server()
+        # Verify FastMCP was instantiated
+        mock_fastmcp.assert_called_once_with(name="HK OpenAI tech Server")
 
-        # Verify server creation
-        mock_fastmcp.assert_called_once()
-        self.assertEqual(server, mock_server)
+        # Verify tool registration
+        mock_register_func.assert_called_once_with(mock_mcp_instance)
 
-        mock_tool_security_incident.register.assert_called_once_with(mock_server)
+        # Verify server run method was called
+        mock_mcp_instance.run.assert_called_once_with(
+            transport="streamable-http", host="localhost", port=8000
+        )
 
 
 if __name__ == "__main__":

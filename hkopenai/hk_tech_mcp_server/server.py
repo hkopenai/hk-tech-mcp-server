@@ -4,31 +4,18 @@ This server provides tools for accessing government information security inciden
 """
 
 from fastmcp import FastMCP
-from hkopenai.hk_tech_mcp_server import tool_security_incident
+from hkopenai.hk_tech_mcp_server.tools import security_incident
 
 
-def create_mcp_server():
+def server(host: str, port: int, sse: bool):
     """Create and configure the MCP server"""
     mcp = FastMCP(name="HK OpenAI tech Server")
 
-    tool_security_incident.register(mcp)
-
-    return mcp
-
-
-def main(host: str, port: int, sse: bool):
-    """
-    Main function to run the Tech MCP Server.
-    Args:
-        args: Command line arguments passed to the function.
-    """
-    server = create_mcp_server()
+    security_incident.register(mcp)
 
     if sse:
-        server.run(transport="streamable-http", host=host, port=port)
-        print(
-            f"Tech MCP Server running in SSE mode on port {port}, bound to {host}"
-        )
+        mcp.run(transport="streamable-http", host=host, port=port)
+        print(f"Tech MCP Server running in SSE mode on port {port}, bound to {host}")
     else:
-        server.run()
+        mcp.run()
         print("Tech MCP Server running in stdio mode")

@@ -7,12 +7,6 @@ from typing import List, Dict
 from hkopenai_common.json_utils import fetch_json_data
 
 
-def fetch_security_incident_data() -> List[Dict]:
-    """Fetch security incident data from Digital Policy Office"""
-    url = "https://www.govcert.gov.hk/en/incidents.json"
-    return fetch_json_data(url)
-
-
 def register(mcp):
     """Registers the security incident tool with the FastMCP server."""
 
@@ -28,10 +22,12 @@ def register(mcp):
         return _get_security_incidents()
 
 
-def _get_security_incidents() -> List[Dict]:
+def _get_security_incidents() -> List[Dict] | Dict:
     """Get number of government information security incidents reported to Digital Policy Office in Hong Kong
 
     Returns:
         List of incidents by year with type and count details
     """
-    return fetch_security_incident_data()
+    url = "https://www.govcert.gov.hk/en/incidents.json"
+    data = fetch_json_data(url)
+    return data
